@@ -169,7 +169,7 @@ class AirDropServerHandler(BaseHTTPRequestHandler):
             post_data = bytearray()
             while True:
                 # https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Transfer-Encoding#chunked_encoding
-                chunk_size = int(self.rfile.readline().rstrip(b"\r\n"),)
+                chunk_size = int(self.rfile.readline().rstrip(b"\r\n"), 16)
                 if chunk_size == 0: # end of chunks
                     self.rfile.read() # consume rest of the input
                     break
